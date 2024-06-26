@@ -12,13 +12,14 @@
             </div>
 
             <div class="d-flex">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);">
-                            <i class="material-icons text-dark">power_settings_new</i>
-                        </a>
-                    </li>
-                </ul>
+                <a class="btn btn-rounded btn-danger" href="{{ route('logout.process') }}">
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="material-icons text-white" style="font-size: 18px">power_settings_new</i>
+                        <span class="text-uppercase">
+                            Logout
+                        </span>
+                    </div>
+                </a>
             </div>
         </div>
     </nav>

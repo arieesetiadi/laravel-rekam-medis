@@ -23,7 +23,7 @@
 
                     <div class="card-body py-4">
                         <div class="d-flex justify-content-center">
-                            <form id="login" action="{{ route('login.authenticate') }}" method="POST"
+                            <form id="login" action="{{ route('login.process') }}" method="POST"
                                 class="w-75">
                                 @csrf
                                 {{-- Input Username --}}

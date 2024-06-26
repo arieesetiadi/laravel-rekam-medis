@@ -13,7 +13,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function authenticate(LoginRequest $request): RedirectResponse
+    public function process(LoginRequest $request): RedirectResponse
     {
         return redirect()->route('dashboard.index');
     }

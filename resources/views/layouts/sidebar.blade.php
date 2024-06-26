@@ -1,7 +1,7 @@
 <div class="app-sidebar">
     <div class="logo">
         <a class="logo-icon" href="{{ route('dashboard.index') }}">
-            <span class="logo-text">System</span>
+            <span class="logo-text">SYSTEM</span>
         </a>
 
         <div class="sidebar-user-switcher user-activity-online">
@@ -22,7 +22,7 @@
             </li>
 
             <li class="{{ request()->routeIs('dashboard.index') ? 'active-page' : '' }}">
-                <a href="{{ route('dashboard.index') }}">
+                <a href="{{ route('dashboard.index') }}" class="text-uppercase">
                     <i class="material-icons text-dark">dashboard</i>
                     Dashboard
                 </a>
