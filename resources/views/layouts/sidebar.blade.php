@@ -1,24 +1,24 @@
 <div class="app-sidebar">
     <div class="logo">
-        <a class="logo-icon" href="{{ route('dashboard.index') }}">
+        <span class="logo-icon">
             <span class="logo-text">SYSTEM</span>
-        </a>
+        </span>
 
         <div class="sidebar-user-switcher user-activity-online">
-            <a href="#">
+            <div>
                 <img class="rounded-circle" src="{{ asset('assets/images/profiles/default.png') }}" alt="Profile Picture">
                 <span class="activity-indicator"></span>
                 <span class="user-info-text">Robert<br>
                     <span class="user-state-info">Online</span>
                 </span>
-            </a>
+            </div>
         </div>
     </div>
 
     <div class="app-menu">
         <ul class="accordion-menu">
             <li class="sidebar-title">
-                Main
+                Utama
             </li>
 
             <li class="{{ request()->routeIs('dashboard.index') ? 'active-page' : '' }}">
@@ -28,12 +28,23 @@
                 </a>
             </li>
 
-            {{-- <li class="{{ request()->routeIs('cms.users.*') ? 'active-page' : '' }}">
-                <a href="{{ route('cms.users.index') }}">
-                    <i class="material-icons text-dark">people</i>
-                    Users
+            <li class="sidebar-title">
+                Menu
+            </li>
+
+            <li class="{{ request()->routeIs('peminjaman.*') ? 'active-page' : '' }}">
+                <a href="{{ route('peminjaman.index') }}" class="text-uppercase">
+                    <i class="material-icons text-dark">list_alt</i>
+                    Peminjaman
                 </a>
-            </li> --}}
+            </li>
+
+            <li class="{{ request()->routeIs('penyediaan.*') ? 'active-page' : '' }}">
+                <a href="{{ route('penyediaan.index') }}" class="text-uppercase">
+                    <i class="material-icons text-dark">inventory</i>
+                    Penyediaan
+                </a>
+            </li>
         </ul>
     </div>
 </div>
