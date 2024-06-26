@@ -2,18 +2,16 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    @include('cms.layouts.meta')
-    @include('cms.layouts.styles')
-
-    <title>CMS {{ config('app.name') }}</title>
+    @include('layouts.meta')
+    @include('layouts.styles')
 </head>
 
 <body>
     <div class="app align-content-stretch d-flex flex-wrap">
-        @include('cms.layouts.sidebar')
+        @include('layouts.sidebar')
 
         <div class="app-container">
-            @include('cms.layouts.topbar')
+            @include('layouts.topbar')
 
             <div class="app-content">
                 <div class="content-wrapper">
@@ -23,8 +21,8 @@
         </div>
     </div>
 
-    @include('cms.layouts.scripts')
-    @include('cms.layouts.modals')
+    @include('layouts.scripts')
+    @include('layouts.modals')
 </body>
 
 </html>
