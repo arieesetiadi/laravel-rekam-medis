@@ -9,69 +9,81 @@
 </head>
 
 <body>
-    <div class="app app-auth-sign-in align-content-stretch d-flex justify-content-end flex-wrap">
-        <div class="app-auth-background"></div>
-        <div class="app-auth-container">
-            <form id="login" action="{{ route('login.authenticate') }}" method="POST">
-                @csrf
-
-                <div class="logo">
-                    Sign In
-                </div>
-
-                <p class="auth-description">
-                    Please login to access the website.
-                </p>
-
-                <div class="auth-credentials m-b-xxl">
-                    {{-- Input Username --}}
-                    <div class="m-b-md">
-                        <label id="label-username" class="form-label d-block" for="username">
-                            Username
-                        </label>
-
-                        <input id="username" class="form-control mb-2" name="username" type="text"
-                            value="{{ old('username') }}" aria-describedby="label-username" placeholder="e.g. robert">
-
-                        @error('username')
-                            <span class="d-block text-danger" for="username">
-                                {{ $message }}
-                            </span>
-                        @enderror
-                    </div>
-
-                    {{-- Input Password --}}
-                    <div class="m-b-md">
-                        <div class="d-flex">
-                            <label id="label-password" class="form-label d-block" for="password">
-                                Password
-                            </label>
-
-                            <div class="d-inline-block form-check form-switch px-5">
-                                <input id="toggle-password" class="form-check-input" name="toggle-password"
-                                    type="checkbox" tabindex="-1" onchange="togglePassword(event, 'password')">
-                            </div>
-                        </div>
-
-                        <input id="password" class="form-control mb-2" name="password" type="password"
-                            aria-describedby="label-password"
-                            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" autocomplete="off">
-
-                        @error('password')
-                            <span class="d-block text-danger" for="password">
-                                {{ $message }}
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="auth-submit">
-                    <button class="btn btn-primary" type="submit" role="button">
-                        Sign In
-                    </button>
-                </div>
-            </form>
+    <div class="p-lg-5 container p-4">
+        <div class="d-flex justify-content-lg-start justify-content-center mb-lg-5 mb-4">
+            <img src="{{ asset('assets/images/icons/neptune.png') }}" alt="Main Icon">
         </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6 offset-lg-3">
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h2 class="text-uppercase text-center">Sistem Penyediaan Rekam Medis</h2>
+                    </div>
+
+                    <div class="card-body py-4">
+                        <div class="d-flex justify-content-center">
+                            <form id="login" action="{{ route('login.authenticate') }}" method="POST"
+                                class="w-75">
+                                @csrf
+                                {{-- Input Username --}}
+                                <div class="mb-lg-4 mb-3">
+                                    <label id="label-username" class="form-label d-block" for="username">
+                                        Username
+                                    </label>
+
+                                    <input id="username" class="form-control mb-2" name="username" type="text"
+                                        value="{{ old('username') }}" aria-describedby="label-username"
+                                        placeholder="Username">
+
+                                    @error('username')
+                                        <span class="d-block text-danger" for="username">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                {{-- Input Password --}}
+                                <div>
+                                    <div class="d-flex">
+                                        <label id="label-password" class="form-label d-block" for="password">
+                                            Password
+                                        </label>
+
+                                        <div class="d-inline-block form-check form-switch px-5">
+                                            <input id="toggle-password" class="form-check-input" name="toggle-password"
+                                                type="checkbox" tabindex="-1"
+                                                onchange="togglePassword(event, 'password')">
+                                        </div>
+                                    </div>
+
+                                    <input id="password" class="form-control mb-2" name="password" type="password"
+                                        aria-describedby="label-password"
+                                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                                        autocomplete="off">
+
+                                    @error('password')
+                                        <span class="d-block text-danger" for="password">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-white">
+                        <div class="auth-submit d-flex justify-content-center">
+                            <button class="btn btn-primary text-uppercase px-4" type="submit" form="login"
+                                role="button">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     @include('layouts.scripts')

@@ -14,7 +14,7 @@
             <div class="d-flex">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cms.auth.logout.process') }}">
+                        <a class="nav-link" href="javascript:void(0);">
                             <i class="material-icons text-dark">power_settings_new</i>
                         </a>
                     </li>
