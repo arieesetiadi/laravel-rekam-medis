@@ -18,7 +18,7 @@
             <div class="col-12 col-lg-6 offset-lg-3">
                 <div class="card">
                     <div class="card-header border-bottom">
-                        <h2 class="text-uppercase text-center">Sistem Penyediaan Rekam Medis</h2>
+                        <h2 class="text-uppercase text-center py-2">Sistem Penyediaan Rekam Medis</h2>
                     </div>
 
                     <div class="card-body py-4">
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="card-footer bg-white">
-                        <div class="auth-submit d-flex justify-content-center">
+                        <div class="auth-submit d-flex justify-content-center py-2">
                             <button class="btn btn-primary text-uppercase px-4" type="submit" form="login"
                                 role="button">
                                 Login
