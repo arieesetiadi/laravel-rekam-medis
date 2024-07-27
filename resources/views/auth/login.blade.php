@@ -18,26 +18,25 @@
             <div class="col-12 col-lg-6 offset-lg-3">
                 <div class="card">
                     <div class="card-header border-bottom">
-                        <h2 class="text-uppercase text-center py-2">Sistem Penyediaan Rekam Medis</h2>
+                        <h2 class="text-uppercase py-2 text-center">Sistem Penyediaan Rekam Medis</h2>
                     </div>
 
                     <div class="card-body py-4">
                         <div class="d-flex justify-content-center">
-                            <form id="login" action="{{ route('login.process') }}" method="POST"
-                                class="w-75">
+                            <form id="login" action="{{ route('login.process') }}" method="POST" class="w-75">
                                 @csrf
-                                {{-- Input Username --}}
+                                {{-- Input Email --}}
                                 <div class="mb-lg-4 mb-3">
-                                    <label id="label-username" class="form-label d-block" for="username">
-                                        Username
+                                    <label id="label-email" class="form-label d-block" for="email">
+                                        Email
                                     </label>
 
-                                    <input id="username" class="form-control mb-2" name="username" type="text"
-                                        value="{{ old('username') }}" aria-describedby="label-username"
-                                        placeholder="Username">
+                                    <input id="email" class="form-control mb-2" name="email" type="email"
+                                        value="{{ old('email') }}" aria-describedby="label-email" placeholder="Email"
+                                        required>
 
-                                    @error('username')
-                                        <span class="d-block text-danger" for="username">
+                                    @error('email')
+                                        <span class="d-block text-danger" for="email">
                                             {{ $message }}
                                         </span>
                                     @enderror
@@ -60,7 +59,7 @@
                                     <input id="password" class="form-control mb-2" name="password" type="password"
                                         aria-describedby="label-password"
                                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                                        autocomplete="off">
+                                        autocomplete="off" required>
 
                                     @error('password')
                                         <span class="d-block text-danger" for="password">
@@ -83,12 +82,9 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     @include('layouts.scripts')
-
-    {!! JsValidator::formRequest('App\Http\Requests\LoginRequest', '#login') !!}
 </body>
 
 </html>
