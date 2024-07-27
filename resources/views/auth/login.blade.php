@@ -5,18 +5,24 @@
     @include('layouts.meta')
     @include('layouts.styles')
 
+    <style>
+        body {
+            background-color: unset !important;
+        }
+    </style>
+
     <title>Login | {{ config('app.name') }}</title>
 </head>
 
 <body>
     <div class="p-lg-5 container p-4">
         <div class="d-flex justify-content-lg-start justify-content-center mb-lg-5 mb-4">
-            <img src="{{ asset('assets/images/icons/neptune.png') }}" alt="Main Icon">
+            <img width="150" src="{{ asset('assets/images/logos/rsd-mangusada-transparent.png') }}" alt="RSD Icon">
         </div>
 
         <div class="row">
             <div class="col-12 col-lg-6 offset-lg-3">
-                <div class="card">
+                <div class="card shadow-lg">
                     <div class="card-header border-bottom">
                         <h2 class="text-uppercase py-2 text-center">Sistem Penyediaan Rekam Medis</h2>
                     </div>
@@ -32,8 +38,7 @@
                                     </label>
 
                                     <input id="email" class="form-control mb-2" name="email" type="email"
-                                        value="{{ old('email') }}" aria-describedby="label-email" placeholder="Email"
-                                        required>
+                                        value="{{ old('email') }}" aria-describedby="label-email" placeholder="Email">
 
                                     @error('email')
                                         <span class="d-block text-danger" for="email">
@@ -59,7 +64,7 @@
                                     <input id="password" class="form-control mb-2" name="password" type="password"
                                         aria-describedby="label-password"
                                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                                        autocomplete="off" required>
+                                        autocomplete="off">
 
                                     @error('password')
                                         <span class="d-block text-danger" for="password">
@@ -85,6 +90,8 @@
     </div>
 
     @include('layouts.scripts')
+
+    {!! JsValidator::formRequest('App\Http\Requests\LoginRequest', '#login') !!}
 </body>
 
 </html>
