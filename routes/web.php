@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenyediaanController;
-use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PeminjamController;
+use App\Http\Controllers\PasienController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -15,8 +16,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
-    Route::prefix('/peminjaman')->group(function () {
-        Route::get('/', [PeminjamanController::class, 'index'])->name('peminjaman.index');
+    Route::prefix('/peminjam')->group(function () {
+        Route::get('/', [PeminjamController::class, 'index'])->name('peminjam.index');
+    });
+
+    Route::prefix('/pasien')->group(function () {
+        Route::get('/', [PasienController::class, 'index'])->name('pasien.index');
     });
 
     Route::prefix('/penyediaan')->group(function () {

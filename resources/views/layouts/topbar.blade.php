@@ -12,7 +12,7 @@
             </div>
 
             <div class="d-flex">
-                <a class="btn btn-rounded btn-danger" href="{{ route('logout.process') }}">
+                <a class="btn btn-dark" href="{{ route('logout.process') }}">
                     <div class="d-flex align-items-center gap-1">
                         <i class="material-icons text-white" style="font-size: 18px">power_settings_new</i>
                         <span class="text-uppercase">

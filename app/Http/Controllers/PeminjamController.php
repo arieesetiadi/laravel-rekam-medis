@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 
-class PeminjamanController extends Controller
+class PeminjamController extends Controller
 {
     public function index(): View
     {
-        return view('modules.peminjaman.index');
+        return view('modules.peminjam.index');
     }
 }
