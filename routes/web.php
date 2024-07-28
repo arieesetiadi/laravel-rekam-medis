@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/peminjam')->group(function () {
         Route::get('/', [PeminjamController::class, 'index'])->name('peminjam.index');
+        Route::post('/', [PeminjamController::class, 'store'])->name('peminjam.store');
     });
 
     Route::prefix('/pasien')->group(function () {

@@ -1,176 +1,124 @@
-@use('\App\Constants\GeneralStatus', 'GeneralStatus')
+@php
+    use App\Constants\Gender;
+@endphp
 
-@extends('cms.layouts.master')
+@extends('layouts.master')
+
+@push('after-meta')
+    <title>Peminjam | {{ config('app.name') }}</title>
+@endpush
 
 @section('content')
     <div class="container">
-        <div class="row mb-3">
+        <div class="row">
             <div class="col">
-                <div class="page-description px-0">
-                    <h1>{{ $title }}</h1>
+                <div class="page-description d-flex align-items-center px-0">
+                    <div class="page-description-content flex-grow-1">
+                        <h5 class="text-uppercase">Peminjaman</h5>
+                        <h1 class="text-uppercase">Data Peminjam</h1>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <form id="form-user" class="row"
-                            action="{{ !$edit ? route('cms.users.store') : route('cms.users.update', $user->id) }}"
-                            method="POST" enctype="multipart/form-data">
+                        <form id="peminjam-form" class="row" action="{{ route('peminjam.store') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
-                            @method(!$edit ? 'POST' : 'PUT')
 
-                            {{-- Input Username --}}
-                            <div class="col-12 col-lg-6 mb-3">
-                                <label id="label-username" class="form-label d-block required" for="username">
-                                    Username
+                            {{-- Name --}}
+                            <div class="col-12 mb-3">
+                                <label id="label-nama" class="form-label d-block required" for="nama">
+                                    Nama
                                 </label>
 
-                                <input id="username" class="form-control mb-2" name="username" type="text"
-                                    value="{{ old('username', $user->username ?? null) }}" aria-describedby="label-username"
-                                    placeholder="Username">
+                                <input id="nama" class="form-control mb-2" name="nama" type="text"
+                                    placeholder="Nama">
 
-                                @error('username')
-                                    <span class="d-block text-danger" for="username">
+                                @error('nama')
+                                    <span class="d-block text-danger" for="nama">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
 
-                            {{-- Input Name --}}
-                            <div class="col-12 col-lg-6 mb-3">
-                                <label id="label-name" class="form-label d-block required" for="name">
-                                    Name
+                            {{-- Jenis Kelamin --}}
+                            <div class="col-12 mb-3">
+                                <label id="label-gender" class="form-label d-block required" for="gender">
+                                    Jenis Kelamin
                                 </label>
 
-                                <input id="name" class="form-control mb-2" name="name" type="text"
-                                    value="{{ old('name', $user->name ?? null) }}" aria-describedby="label-name"
-                                    placeholder="Name">
+                                <select id="gender" class="form-select mb-2" name="jns_kel" aria-disabled="true">
+                                    <option selected disabled>Jenis Kelamin</option>
 
-                                @error('name')
-                                    <span class="d-block text-danger" for="name">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-
-                            {{-- Input Email --}}
-                            <div class="col-12 col-lg-6 mb-3">
-                                <label id="label-email" class="form-label d-block required" for="email">
-                                    Email
-                                </label>
-
-                                <input id="email" class="form-control mb-2" name="email" type="email"
-                                    value="{{ old('email', $user->email ?? null) }}" aria-describedby="label-email"
-                                    placeholder="Email address (e.g. robert@example.com)">
-
-                                @error('email')
-                                    <span class="d-block text-danger" for="email">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-
-                            {{-- Input Phone --}}
-                            <div class="col-12 col-lg-6 mb-3">
-                                <label id="label-phone" class="form-label d-block" for="phone">
-                                    Phone
-                                </label>
-
-                                <input id="phone" class="form-control mb-2" name="phone" type="text"
-                                    value="{{ old('phone', $user->phone ?? null) }}" aria-describedby="label-phone"
-                                    placeholder="Phone number (e.g. 0821xxxxxxxx)">
-
-                                @error('phone')
-                                    <span class="d-block text-danger" for="phone">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-
-                            {{-- Input User Role --}}
-                            <div class="col-12 col-lg-6 mb-3">
-                                <label id="label-user-role-id" class="form-label d-block required" for="user-role-id">
-                                    User Role
-                                </label>
-
-                                <select id="user-role-id" class="form-select mb-2" name="user_role_id"
-                                    aria-label="User role select">
-                                    <option selected disabled>Choose User Role</option>
-
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}" @selected($role->id == old('user_role_id', $user->role->id ?? null))>
-                                            {{ $role->name }}
+                                    @foreach (Gender::values() as $gender)
+                                        <option value="{{ $gender }}" @selected($gender == old('jns_kel', $user->gender ?? null))>
+                                            {{ $gender }}
                                         </option>
                                     @endforeach
                                 </select>
 
-                                @error('user_role_id')
-                                    <span class="d-block text-danger" for="user_role_id">
+                                @error('jns_kel')
+                                    <span class="d-block text-danger" for="gender">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
 
-                            {{-- Input Status --}}
-                            <div class="col-12 col-lg-6 mb-3">
-                                <label id="label-status" class="form-label d-block required" for="status">
-                                    Status
+                            {{-- Umur --}}
+                            <div class="col-12 mb-3">
+                                <label id="label-usia" class="form-label d-block required" for="usia">
+                                    Umur
                                 </label>
 
-                                <select id="status" class="form-select mb-2" name="status"
-                                    aria-label="User status select" aria-disabled="true">
-                                    <option selected disabled>Choose Status</option>
+                                <input id="usia" class="form-control mb-2" name="usia" type="text"
+                                    placeholder="Umur">
 
-                                    @foreach (GeneralStatus::values() as $status)
-                                        <option value="{{ $status }}" @selected($status == old('status', $user->status ?? null))>
-                                            {{ GeneralStatus::label($status) }}
-                                        </option>
-                                    @endforeach
-                                </select>
-
-                                @error('status')
-                                    <span class="d-block text-danger" for="status">
+                                @error('usia')
+                                    <span class="d-block text-danger" for="usia">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
 
-                            {{-- Input Password --}}
-                            <div class="col-12 col-lg-6 mb-3">
-                                <div class="d-flex">
-                                    <label id="label-password" class="form-label d-block {{ !$edit ? 'required' : '' }}"
-                                        for="password">
-                                        Password
-                                    </label>
+                            {{-- Alamat --}}
+                            <div class="col-12 mb-3">
+                                <label id="label-alamat" class="form-label d-block required" for="alamat">
+                                    Alamat
+                                </label>
 
-                                    <div class="d-inline-block form-check form-switch px-5">
-                                        <input id="toggle-password" class="form-check-input" name="toggle-password"
-                                            type="checkbox" tabindex="-1" onchange="togglePassword(event, 'password')">
-                                    </div>
-                                </div>
+                                <input id="alamat" class="form-control mb-2" name="alamat" type="text"
+                                    placeholder="Alamat">
 
-                                <input id="password" class="form-control mb-2" name="password" type="password"
-                                    aria-describedby="label-password"
-                                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                                    autocomplete="off">
+                                @error('alamat')
+                                    <span class="d-block text-danger" for="alamat">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
 
-                                @error('password')
-                                    <span class="d-block text-danger" for="password">
+                            {{-- KTP --}}
+                            <div class="col-12 mb-3">
+                                <label id="label-ktp" class="form-label d-block required" for="ktp">
+                                    Bukti Diri
+                                </label>
+
+                                <input id="ktp" class="form-control mb-2" name="ktp" type="text"
+                                    placeholder="Bukti diri/KTP">
+
+                                @error('ktp')
+                                    <span class="d-block text-danger" for="ktp">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
 
                             <div class="d-flex mt-4 gap-2">
-                                <a class="btn btn-light" type="submit" href="{{ route('cms.users.index') }}">
-                                    Back
-                                </a>
-
                                 <button class="btn btn-primary" type="submit">
-                                    {{ !$edit ? 'Submit' : 'Update' }}
+                                    Submit
                                 </button>
                             </div>
                         </form>
@@ -180,11 +128,3 @@
         </div>
     </div>
 @endsection
-
-@push('after-scripts')
-    @if (!$edit)
-        {!! JsValidator::formRequest('App\Http\Requests\CMS\User\StoreRequest', '#form-user') !!}
-    @else
-        {!! JsValidator::formRequest('App\Http\Requests\CMS\User\UpdateRequest', '#form-user') !!}
-    @endif
-@endpush
