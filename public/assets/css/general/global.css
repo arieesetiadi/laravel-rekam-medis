@@ -25,3 +25,11 @@ span.required::after {
     content: '*';
     color: #dc3545;
 }
+
+.whitespace-nowrap{
+    white-space: nowrap;
+}
+
+.form-select-sm {
+    padding: 8px 36px 8px 18px;
+}

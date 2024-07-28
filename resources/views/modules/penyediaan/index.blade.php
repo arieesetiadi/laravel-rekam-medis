@@ -15,5 +15,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body" style="width: 100%; overflow-x: scroll">
+                        <livewire:penyediaan-table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
