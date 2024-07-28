@@ -5,7 +5,7 @@
 @extends('layouts.master')
 
 @push('after-meta')
-    <title>Peminjam | {{ config('app.name') }}</title>
+    <title>Data Peminjam | {{ config('app.name') }}</title>
 @endpush
 
 @section('content')

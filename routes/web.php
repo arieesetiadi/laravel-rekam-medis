@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/pasien')->group(function () {
         Route::get('/', [PasienController::class, 'index'])->name('pasien.index');
+        Route::post('/', [PasienController::class, 'store'])->name('pasien.store');
     });
 
     Route::prefix('/penyediaan')->group(function () {
