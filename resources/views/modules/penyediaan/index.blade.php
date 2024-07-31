@@ -55,8 +55,8 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <form>
+                                <tr class="row-form">
+                                    <form id="penyediaan-form" onsubmit="submitPenyediaanForm(event)">
                                         <td style="min-width: 150px;">
                                             <input class="form-control form-control-sm" type="text">
                                         </td>
@@ -97,12 +97,7 @@
                                         </td>
 
                                         <td style="min-width: 200px;" class="border-bottom-0">
-                                            <button class="btn btn-primary">
-                                                @if (false)
-                                                    <span class="spinner-border spinner-border-sm" role="status"
-                                                        aria-hidden="true"></span>
-                                                @endif
-
+                                            <button type="submit" class="btn btn-primary">
                                                 Simpan
                                             </button>
                                         </td>
@@ -129,3 +124,7 @@
         </div>
     </div>
 @endsection
+
+@push('after-scripts')
+    <script src="{{ asset('assets/js/pages/penyediaan.min.js') }}"></script>
+@endpush
