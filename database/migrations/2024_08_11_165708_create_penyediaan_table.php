@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('no_telp_ruangan');
             $table->string('tujuan');
             $table->date('tgl_peminjaman');
-            $table->date('tgl_dibuat')->default(Carbon::now());
+            $table->dateTime('tgl_dibuat');
             $table->enum('status_berkas', [StatusBerkas::SEDANG_DICARI, StatusBerkas::TERSEDIA]);
             $table->timestamps();
         });

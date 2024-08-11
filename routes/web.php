@@ -28,5 +28,6 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/penyediaan')->group(function () {
         Route::get('/', [PenyediaanController::class, 'index'])->name('penyediaan.index');
+        Route::post('/', [PenyediaanController::class, 'store'])->name('penyediaan.store');
     });
 });
